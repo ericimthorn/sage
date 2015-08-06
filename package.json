@@ -53,6 +53,15 @@
     "minimist": "^1.1.1",
     "run-sequence": "^1.0.2",
     "traverse": "^0.6.6",
-    "wiredep": "^2.2.2"
+    "wiredep": "^2.2.2",
+    "gulp-stylus": "latest",
+    "axis": "latest",
+    "jeet": "latest",
+    "nib": "latest",
+    "traverse": "latest",
+    "run-sequence": "latest",
+    "rupture": "latest",
+    "lost-grid": "latest",
+    "bootstrap-styl": "latest"
   }
 }
