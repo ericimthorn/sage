@@ -66,10 +66,14 @@
 7. Activate theme with `$ wp theme activate [sitename]`
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> change markdown
 8. Add menu  
   - `$ wp menu create "primary-menu"`  
   - `$ wp menu location assign primary-menu primary_navigation`
   - `$ wp menu item add-post primary-menu 1 --title="Home"`
+<<<<<<< HEAD
 
 9. Go to the theme files `$ cd wp-content/themes/[sitename]`
 
@@ -88,20 +92,25 @@
   - `$ gulp watch`
 =======
 8. Go to the theme files `$ cd wp-content/themes/[sitename]`
+=======
+>>>>>>> change markdown
 
-9. In `assets/manifest.json`, change value `devUrl` to `http://[sitename].dev`
+9. Go to the theme files `$ cd wp-content/themes/[sitename]`
 
-10. Install npm packages
+10. In `assets/manifest.json`, change value `devUrl` to `http://[sitename].dev`
+
+11. Install npm packages
   - `$ npm install`
 
-11. Install Bower packages
+12. Install Bower packages
   - `$ bower install`
 
-12. Initiate Gulp
+13. Initiate Gulp
   - `$ gulp`
 
-13. Execute Gulp watcher
+14. Execute Gulp watcher
   - `$ gulp watch`
+<<<<<<< HEAD
 <!--
 ## Troubleshooting
 If **.htaccess** file is not created in *root* create new file  called `.htaccess` and place:
@@ -119,3 +128,5 @@ RewriteRule . /index.php [L]
 ```
 -->
 >>>>>>> minor bugs
+=======
+>>>>>>> change markdown
