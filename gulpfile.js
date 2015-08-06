@@ -20,6 +20,16 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 
+//ERIX
+var stylus      = require('gulp-stylus');
+var lost        = require('lost-grid');
+var jeet        = require('jeet');
+var rupture     = require('rupture');
+var nib         = require('nib');
+var axis        = require('axis');
+var bootstrap   = require('bootstrap-styl');
+//-ERIX
+
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
 
@@ -96,6 +106,12 @@ var cssTasks = function(filename) {
         errLogToConsole: !enabled.failStyleTask
       }));
     })
+    .pipe(function() {
+		return gulpif('*.styl', stylus({ // ERIX
+			use: [bootstrap(), jeet(), lost(), rupture(), nib(), axis()],
+			compress: true
+		 }));
+	})
     .pipe(concat, filename)
     .pipe(autoprefixer, {
       browsers: [
