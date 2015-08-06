@@ -65,6 +65,7 @@
 
 7. Activate theme with `$ wp theme activate [sitename]`
 
+<<<<<<< HEAD
 8. Add menu  
   - `$ wp menu create "primary-menu"`  
   - `$ wp menu location assign primary-menu primary_navigation`
@@ -85,3 +86,36 @@
 
 14. Execute Gulp watcher
   - `$ gulp watch`
+=======
+8. Go to the theme files `$ cd wp-content/themes/[sitename]`
+
+9. In `assets/manifest.json`, change value `devUrl` to `http://[sitename].dev`
+
+10. Install npm packages
+  - `$ npm install`
+
+11. Install Bower packages
+  - `$ bower install`
+
+12. Initiate Gulp
+  - `$ gulp`
+
+13. Execute Gulp watcher
+  - `$ gulp watch`
+<!--
+## Troubleshooting
+If **.htaccess** file is not created in *root* create new file  called `.htaccess` and place:
+```
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+```
+-->
+>>>>>>> minor bugs
