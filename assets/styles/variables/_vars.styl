@@ -2,7 +2,7 @@
 base-font-size-nr = 15
 base-line-height-nr = 25
 base-font-size = unit(base-font-size-nr, px)
-base-line-height = unit(base-line-height, px)
+base-line-height = unit(base-line-height-nr, px)
 modular_scale = golden
 $images = '../../assets/images/'
 
@@ -104,13 +104,12 @@ $dropdown-border = $color_two
 $dropdown-fallback-border = $dropdown-border
 $dropdown-divider-bg = $color_two
 $dropdown-link-color = $color_three
-$dropdown-link-hover-color = $color_one
-$dropdown-link-hover-bg = $color_three
-$dropdown-link-active-color = $color_one
-$dropdown-link-active-bg = $color_three
+$dropdown-link-hover-color = $navbar-default-link-color
+$dropdown-link-hover-bg = $navbar-default-link-hover-bg
+$dropdown-link-active-color = $navbar-default-link-active-color
+$dropdown-link-active-bg = $navbar-default-link-active-bg
 $dropdown-link-disabled-color = $color_two_alt
 $dropdown-header-color = $color_three
-
 
 //== Forms
 $input-bg = transparent

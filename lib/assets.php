@@ -73,5 +73,12 @@ function assets() {
   }
 
   wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);
+  
+  //localize
+  $translation_array = [
+      'templateUrl' => get_stylesheet_directory_uri()
+  ];
+  wp_localize_script( 'sage_js', 'jsvars', $translation_array );
+  // use in main.js like:  console.log(jsvars.templateUrl);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
