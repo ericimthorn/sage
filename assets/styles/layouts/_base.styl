@@ -1,0 +1,195 @@
+establish-baseline()
+
+html {
+  font-family: $font_one
+  background: $color_one
+  color: $color_two
+}
+
+body {
+  background: transparent
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font_two
+  margin-bottom: 0
+  {alllink} {
+    //
+  }
+}
+
+h1 {
+  adjust-font-size-to(35px)
+  color: $color_three
+  margin-top: 0
+}
+
+h2 {
+  color: $color_three
+}
+
+&.page-header {
+  margin: 0;
+  border-bottom: none
+}
+
+p {
+  img {
+    height: auto
+    max-width: 99%
+  }
+}
+
+{$alllink} {
+  .read-more {
+    white-space: nowrap
+  }
+}
+
+a {
+  text-decoration: underline
+  &:visited {
+    color: $color_three_alt
+  }
+  &:hover {
+    color: $color_two
+  } 
+  &:active {
+    color: $color_four
+  }
+}
+
+label {
+  min-width: 135px
+  font-weight: normal
+}
+
+table {
+  @extend .table
+  @extend .table-striped
+  @extend .table-hover
+}
+
+/******
+FORMS
+******/
+a.btn {
+  //
+  &:hover {
+    //
+  }
+}
+
+//// INPUT TYPES
+.pager li a,
+.btn,
+input {
+  box-shadow: none
+}
+input:not([type="submit"]):not([type="file"]):not([type="image"]) {
+  box-sizing: border-box
+}
+.pager li a,
+button,
+input[type="submit"] {
+  //
+}
+input::-webkit-input-placeholder,
+input:-moz-placeholder {
+  //
+}
+.webform-container-inline.webform-datepicker {
+  white-space: nowrap
+}
+input.error {
+  border: 2px solid $brand-danger !important
+}
+
+/*******
+* NAVIGATION
+********/
+// bootstrap alters
+.navbar-default,
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border: none
+}
+
+ul.nav {
+  noliststyle()
+  //// depth 0+
+  li {
+    {$alllink} {
+      text-decoration: none
+    }
+    // parents & open
+    &.current-menu-ancestor,
+    &.current-menu-parent,
+    &.current-menu-parent,
+    &.current_page_ancestor {
+      > a,
+      > a:hover {
+        background-color: $dropdown-link-active-bg
+        color: $dropdown-link-active-color
+      }
+    }
+
+    //// depth 1+
+    ul.dropdown-menu {
+      padding-top: 0
+      padding-bottom: 0
+      border: none
+      box-shadow: $shadow_one
+    }
+    //// depth 1
+    > ul.dropdown-menu {
+      //
+    }
+    //// depth 2+
+    > ul.dropdown-menu li ul {
+      // left: -1px // if border
+      background: $color_one_alt
+      margin-top: 0
+      padding-left: 13px
+      +above($break_one) {
+        padding-left: 0
+      }
+    }
+  }
+  //// depth 0
+  > li {
+    //
+  }
+}
+
+/*******
+* FIXES AND OTHER
+********/
+
+.media_embed iframe {
+  max-width: 100%
+}
+
+//// Fix for Firefox
+input::-moz-focus-inner {
+  padding: 0
+  border: 0
+}
+
+.caret.left-caret {
+  margin-right: 5px
+  margin-left: 0px
+}
+
+// fix depth 2 dropdowns
+.navbar-default ul.navbar-nav li ul.dropdown-menu li {
+  &.current-menu-ancestor,
+  &.current-menu-parent,
+  &.current-menu-parent,
+  &.current_page_ancestor,
+  &.open {
+    > a,
+    > a:hover {
+      color: $dropdown-link-active-color
+    }
+  }
+}
