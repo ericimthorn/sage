@@ -67,13 +67,19 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> change markdown
+=======
+>>>>>>> origin/featurebranche
 8. Add menu  
   - `$ wp menu create "primary-menu"`  
   - `$ wp menu location assign primary-menu primary_navigation`
   - `$ wp menu item add-post primary-menu 1 --title="Home"`
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/featurebranche
 
 9. Go to the theme files `$ cd wp-content/themes/[sitename]`
 
@@ -90,6 +96,7 @@
 
 14. Execute Gulp watcher
   - `$ gulp watch`
+<<<<<<< HEAD
 =======
 8. Go to the theme files `$ cd wp-content/themes/[sitename]`
 =======
@@ -130,3 +137,5 @@ RewriteRule . /index.php [L]
 >>>>>>> minor bugs
 =======
 >>>>>>> change markdown
+=======
+>>>>>>> origin/featurebranche
