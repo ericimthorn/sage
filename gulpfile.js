@@ -20,15 +20,18 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 
-//ERIX
+//// ERIX
+
+var postcss     = require('gulp-postcss');
+var poststylus  = require('poststylus');
 var stylus      = require('gulp-stylus');
-var lost        = require('lost-grid');
-var jeet        = require('jeet');
+var lost        = require('lost');
 var rupture     = require('rupture');
 var nib         = require('nib');
 var axis        = require('axis');
 var bootstrap   = require('bootstrap-styl');
-//-ERIX
+
+//// -ERIX
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -107,16 +110,16 @@ var cssTasks = function(filename) {
       }));
     })
     .pipe(function() {
-		return gulpif('*.styl', stylus({ // ERIX
-			use: [bootstrap(), jeet(), lost(), rupture(), nib(), axis()],
-			compress: true
-		 }));
-	})
+      return gulpif('*.styl', stylus({ // ERIX
+        use: [bootstrap(), rupture(), nib(), axis(), poststylus('lost')],
+        compress: true
+      }));
+    })
     .pipe(concat, filename)
     .pipe(autoprefixer, {
       browsers: [
         'last 2 versions',
-        'android 4',
+        'android 4.4',
         'opera 12'
       ]
     })

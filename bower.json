@@ -10,8 +10,12 @@
     "bootstrap-sass": "3.3.6"
   },
   "overrides": {
+    "modernizr": {
+      "main": "./modernizr.js"
+    },
     "bootstrap-sass": {
       "main": [
+        "./assets/stylesheets/_bootstrap.scss",
         "./assets/javascripts/bootstrap/transition.js",
         "./assets/javascripts/bootstrap/alert.js",
         "./assets/javascripts/bootstrap/button.js",

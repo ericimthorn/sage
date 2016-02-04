@@ -54,14 +54,13 @@
     "run-sequence": "^1.1.2",
     "traverse": "^0.6.6",
     "wiredep": "^2.2.2",
-    "gulp-stylus": "latest",
-    "axis": "latest",
-    "jeet": "latest",
+    "lost": "latest",
     "nib": "latest",
-    "traverse": "latest",
-    "run-sequence": "latest",
+    "gulp-postcss": "latest",
     "rupture": "latest",
-    "lost-grid": "latest",
-    "bootstrap-styl": "latest"
+    "poststylus": "latest",
+    "gulp-stylus": "latest",
+    "bootstrap-styl": "latest",
+    "axis": "latest"
   }
 }

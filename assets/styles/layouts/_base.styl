@@ -36,7 +36,7 @@ h2 {
 p {
   img {
     height: auto
-    max-width: 99%
+    max-width: 100%
   }
 }
 
@@ -89,38 +89,14 @@ input {
 input:not([type="submit"]):not([type="file"]):not([type="image"]) {
   box-sizing: border-box
 }
-
-.button-style,  
 .pager li a,
 button,
 input[type="submit"] {
-  border: none
-  background: $color_three
-  color: $color_one
-  padding: 7px 15px
-  text-decoration: none
-  &:hover {
-    background: $color_two
-  }
+  //
 }
-
-.placeholder,  
 input::-webkit-input-placeholder,
 input:-moz-placeholder {
-  color: $color_two_alt_two
-}
-.button-style,  
-.pager li a,
-button,
-input[type="submit"] {
-  border: none
-  background: $color_three
-  color: $color_one
-  padding: 7px 15px
-  text-decoration: none
-  &:hover {
-    background: $color_two
-  }
+  //
 }
 .webform-container-inline.webform-datepicker {
   white-space: nowrap
@@ -215,17 +191,5 @@ input::-moz-focus-inner {
     > a:hover {
       color: $dropdown-link-active-color
     }
-  }
-}
-
-//// MEDIA width 100%
-iframe {
-  width: 100%
-  min-height: 200px
-  +above($break_one) {
-    min-height: 350px
-  }
-  +above($break_two) {
-    min-height: 500px
   }
 }

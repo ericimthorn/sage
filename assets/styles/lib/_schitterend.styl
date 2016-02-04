@@ -1,5 +1,4 @@
-@import 'jeet'
-@import 'lost'
+//@import 'lost'
 @import 'rupture'
 @import 'nib'
 @import 'axis'
@@ -24,9 +23,9 @@ noliststyle() {
 }
 
 hide-text() {
-  overflow: hidden
-  text-indent: -1000%
-  white-space: nowrap
+  overflow hidden
+  text-indent -1000%
+  white-space nowrap
 }
 
 
@@ -134,11 +133,11 @@ msc(step = 0, ratio = modular_scale) {
 //// MAKE REM
 remm(n, fallback = true, root = base-font-size) {
   unless current-property {
-    error('rem() must be used within a property')
+    error('rem() must be used within a property');
   }
 
   unless unit(n) is 'px' and unit(root) is 'px' {
-    error('Please use px as a unit')
+    error('Please use px as a unit');
   }
 
   replace(expr, str, val) {
@@ -146,11 +145,11 @@ remm(n, fallback = true, root = base-font-size) {
 
     for e, i in expr {
       if str == e {
-        expr[i] = val
+        expr[i] = val;
       }
     }
 
-    return expr
+    return expr;
   }
 
   if fallback {
@@ -167,65 +166,8 @@ esprite($sprite) {
   display block
   sprite-width($sprite)
   sprite-height($sprite)
-  background-image url('../images/sprites/sprite.png')
+  background-image url('img/sprites/sprite.png')
 }
-
-reverse-color() {
-  background: $color_two
-  color: $color_one
-  h1, h2, h3, h4, h5, h6, p, table, blockquote {
-    color: $color_one
-  }
-  {$alllink} {
-    color: $color_one
-  }
-  .pager li a,
-  button,
-  input[type="submit"] {
-    background: $color_two
-    color: $color_one
-  }
-  ::selection {
-    background: lighten($color_one, 60%);
-  }
-  &.block-dark-color {
-    background: $color_two
-    color: $color_two
-    h1, h2, h3, h4, h5, h6, p, table, blockquote {
-      color: $color_two
-    }
-    {$alllink} {
-      color: $color_two
-    }
-    .pager li a,
-    button,
-    input[type="submit"] {
-      background: $color_two
-      color: $color_three
-    }
-    ::selection {
-      background: lighten($color_one, 60%);
-    }
-    &.block-dark-color {
-      color: $color_one
-      h1, h2, h3, h4, h5, h6, p, table, blockquote {
-        color: $color_one
-      }
-      {$alllink} {
-        color: $color_one
-      }
-      .pager li a,
-      button,
-      ::selection {
-        background: lighten($color_two, 60%);
-      }
-    }
-  }
-}
-.inverted {
-  reverse-color()
-}
-
 
 ///// @TODO afmaken
 move_in($direction = 'left') {
