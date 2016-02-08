@@ -212,27 +212,6 @@ function do_thumb($content){
 */
 
 
-/***
- * Add settings field
- */
-function demo_settings_page() {
-        $this_title = get_bloginfo("name");
-    $this_title .= " intsellingen";
-    add_settings_section("section", $this_title, null, "general");
-    add_settings_field("is-in-beta", "Is in beta", "is_in_beta_display", "general", "section");
-    register_setting("section", "is-in-beta");
-}
-
-function is_in_beta_display() {
-    settings_fields("section");
-    ?>
-    <input type="checkbox" name="is-in-beta" value="1" <?php checked(1, get_option('is-in-beta'), true); ?> />
-    <?php
-}
-
-add_action("admin_init", "demo_settings_page");
-
-
 /**
  * ADD SEARCH TO MENU
  */

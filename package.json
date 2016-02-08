@@ -56,7 +56,6 @@
     "wiredep": "^2.2.2",
     "lost": "latest",
     "nib": "latest",
-    "gulp-postcss": "latest",
     "rupture": "latest",
     "poststylus": "latest",
     "gulp-stylus": "latest",
