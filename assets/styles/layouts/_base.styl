@@ -53,7 +53,7 @@ a {
   }
   &:hover {
     color: $color_two
-  } 
+  }
   &:active {
     color: $color_four
   }
@@ -87,12 +87,18 @@ input {
   box-shadow: none
 }
 input:not([type="submit"]):not([type="file"]):not([type="image"]) {
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
   box-sizing: border-box
 }
 .pager li a,
 button,
 input[type="submit"] {
   //
+  border: none
+  background: $color_three
+  color: $color_one
 }
 input::-webkit-input-placeholder,
 input:-moz-placeholder {
