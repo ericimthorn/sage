@@ -159,14 +159,19 @@ remm(n, fallback = true, root = base-font-size) {
   unit(round((n / root), 4), s('rem'));
 }
 
-esprite($sprite) {
-  sprite-position($sprite)
-  background-repeat no-repeat
-  overflow hidden
-  display block
-  sprite-width($sprite)
-  sprite-height($sprite)
-  background-image url('img/sprites/sprite.png')
+placeholder() {
+  &::-webkit-input-placeholder {
+    {block}
+  }
+  &:-moz-placeholder {
+    {block}
+  }
+  &::-moz-placeholder {
+    {block}
+  }
+  &:-ms-input-placeholder {
+    {block}
+  }
 }
 
 ///// @TODO afmaken
