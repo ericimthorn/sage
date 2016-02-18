@@ -1,0 +1,73 @@
+.schitsocialmedia {
+  +above($break_one) {
+    // text-align: right
+  }
+  ul {
+    noliststyle()
+    li {
+      margin-bottom: 8px
+      a {
+        display: inline-block
+        text-decoration: none
+        transition: filter .4s $ease-out-back
+        &:hover {
+          filter: brightness(45%);
+        }
+      }
+      a.social-media-block__item {
+        margin-bottom: -5px
+        social_media = facebook twitter youtube instagram soundcloud
+        for item in social_media {
+          &.social-media-block__item--{item} {
+            @extend .svg-sprite_{item}-dims
+            @extend .svg-sprite_{item}
+          }
+        }
+      }
+      .social-media-block__text {
+        padding-left: 5px
+        &:hover {
+          text-decoration: underline
+        }
+      }
+    }
+  }
+}
+.schitshare {
+  ul {
+    noliststyle()
+    li {
+      margin-bottom: 8px
+      a {
+        display: inline-block
+        text-decoration: none
+      }
+      a.social-share-block__item {
+        margin-bottom: -5px
+        transition: border .4s
+        box-sizing: content-box
+        border-radius 100%
+        border: 2px solid $color_one
+        social_media = facebook twitter email linkedin gplus pinterest
+        for item in social_media {
+          &.social-share-block__item--{item} {
+            @extend .svg-sprite_share-{item}-dims
+            @extend .svg-sprite_share-{item}
+          }
+        }
+        &:hover {
+          filter: saturate(359) grayscale(100%)
+          border: 2px solid #777
+         // background-color: #777
+
+        }
+      }
+      .social-media-block__text {
+        padding-left: 5px
+        &:hover {
+          text-decoration: underline
+        }
+      }
+    }
+  }
+}

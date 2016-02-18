@@ -1,14 +1,22 @@
 // Globals
-base-font-size-nr = 15
-base-line-height-nr = 25
-base-font-size = unit(base-font-size-nr, 'px')
-base-line-height = unit(base-line-height-nr, 'px')
+default-gutter-size = 1.2rem;
+@lost gutter {default-gutter-size}rem;
+@lost flexbox no-flex;
+@lost cycle auto;
+
+base-font-size = .8rem //unit(base-font-size-nr, 'px')
+base-line-height = 1.7 // unit(base-line-height-nr, 'px')
 modular_scale = golden
-$images = '../../assets/images/'
+$images = '../images/'
+
+body-font-size = base-font-size
+body-line-height = base-line-height
+desktop-ratio = 1.07
+
 
 $font_one = $default_font_sans
-$font_two = $default_font_serif // mainly headings
-$font_three = $default_font_monospace
+$font_two = $default_font_sans // mainly headings
+$font_three = Courier, $default_font_monospace
 
 $color_one = #F5F5F5 // mainly bg
 $color_one_alt = #DDD // alterning table rows etx
@@ -17,8 +25,9 @@ $color_two_alt = #888 // disable
 $color_two_alt_two = #AAA // shade / placeholder
 $color_three = #69AAEE // main theme color
 $color_three_alt = #88BBCC //mainly visited links
-$color_four = lightblue // active color / click/active table etc
-$color_five = $color_three //
+$color_three_alt = lighten($color_three, 30%) // #ff7d6e //mainly visited links
+$color_four = #BBDDDC // active color / click/active table etc
+$color_five = #EDEDED // BG2
 $color_six = $color_three
 $color_seven = $color_one
 $color_eight = $color_one
@@ -45,19 +54,23 @@ $break_min_two = 300px
 $break_min_one = 600px
 $break_one = 750px
 $break_two = 900px
-$break_three = 1100px
-$break_four = 1200px
+$break_three = 1000px
+$break_four = 1100px
+$break_five = 1200px
+desktop = 9999999999999999px
 
 $break_max = {
-  w: $break_four,
-  p: 15px
+  w: $break_three,
+  p: default-gutter-size
 }
 
-$gutter-width = 12px
-$footer-height = 50px
+$gutter-width = default-gutter-size
+gutter = default-gutter-size
+$footer-height = 5rem
 
-$main_margins_big = 140px
-$main_margins_small = 30px
+$main_margins_big = 10rem
+$main_margins_small = 5rem
+$outer_margins = 5rem
 
 ///// Bootstrap
 $border-radius-base = 0
@@ -69,18 +82,18 @@ $caret-width-large = 5px
 $navbar-default-bg = transparent
 
 // Basics of a navbar
-$navbar-height = 50px
+$navbar-height = 5rem
 $navbar-padding-vertical = 0
 
 $navbar-default-color = $color_four
 $navbar-default-border = $color_three
 
 // Navbar links
-$navbar-default-link-color = $color_three
-$navbar-default-link-hover-color = $color_one
-$navbar-default-link-hover-bg = $color_three
-$navbar-default-link-active-color = $color_one
-$navbar-default-link-active-bg = $color_three
+$navbar-default-link-color = $color_two
+$navbar-default-link-hover-color = $color_two
+$navbar-default-link-hover-bg = $color_five
+$navbar-default-link-active-color = $color_two
+$navbar-default-link-active-bg = $color_five
 
 // Navbar brand label
 $navbar-default-brand-color = $color_three
@@ -92,7 +105,7 @@ $navbar-default-toggle-hover-bg = $color_three_alt
 $navbar-default-toggle-icon-bar-bg = $color_three
 
 //=== Shared nav styles
-$nav-link-padding = 10px 15px
+$nav-link-padding = 2rem 2.5rem
 $nav-link-hover-bg = $color_two_alter
 
 $nav-disabled-link-color = $color_two_alt
@@ -106,8 +119,8 @@ $dropdown-divider-bg = $color_two
 $dropdown-link-color = $color_three
 $dropdown-link-hover-color = $color_one
 $dropdown-link-hover-bg = $color_three
-$dropdown-link-active-color = $color_one
-$dropdown-link-active-bg = $color_three
+$dropdown-link-active-color = $color_two
+$dropdown-link-active-bg = $color_five
 $dropdown-link-disabled-color = $color_two_alt
 $dropdown-header-color = $color_three
 
@@ -117,5 +130,3 @@ $input-bg = transparent
 $input-bg-disabled = color_two_alt
 $input-color = $color_two
 $input-border = $color_three
-
-

@@ -1,8 +1,8 @@
-establish-baseline()
+render-baseline()
 
 html {
   font-family: $font_one
-  background: $color_one
+  background: $color_five
   color: $color_two
 }
 
@@ -13,24 +13,35 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: $font_two
   margin-bottom: 0
-  {alllink} {
+  +alllink() {
     //
   }
 }
 
 h1 {
-  adjust-font-size-to(35px)
-  color: $color_three
+  margin-bottom 1.4rem
   margin-top: 0
+  font-size: 1.4rem
+  line-height-rhythm()
+  font-weight: normal
+  color: $color_two
 }
 
 h2 {
   color: $color_three
+  font-size: 1.2rem
+  line-height-rhythm()
+  font-weight normal
+  +alllink() {
+      text-decoration: none
+  }
+  a:hover {
+      color: $color_three
+      text-decoration: underline
+  }
 }
-
-&.page-header {
-  margin: 0;
-  border-bottom: none
+h3 {
+    font-size: 1rem
 }
 
 p {
@@ -40,7 +51,26 @@ p {
   }
 }
 
-{$alllink} {
+.wp-caption,
+figure {
+  border: none
+}
+figcaption {
+  margin-top: .8rem
+  font-size: .8rem
+  line-height-rhythm()
+  text-align: right
+  color: $color_two_alt
+}
+
+///// ADMIN TEXTEDITOR
+body#tinymce {
+  margin: 5px 15px !important
+}
+
++alllink() {
+  &.continued,
+  .continued,
   .read-more {
     white-space: nowrap
   }
@@ -62,6 +92,10 @@ a {
 label {
   min-width: 135px
   font-weight: normal
+}
+
+blockquote {
+  font-style: italic
 }
 
 table {
@@ -86,11 +120,16 @@ a.btn {
 input {
   box-shadow: none
 }
+
+textarea,
 input:not([type="submit"]):not([type="file"]):not([type="image"]) {
-  -webkit-appearance: none
-  -moz-appearance: none
   appearance: none
   box-sizing: border-box
+  border: none
+  padding: 3px 10px 5px 10px
+  background: $color_five
+  max-width: 100%
+  font-size .9rem
 }
 .pager li a,
 button,
@@ -98,21 +137,46 @@ input[type="submit"] {
   border: none
   background: $color_three
   color: $color_one
+  padding: 5px 5px
 }
+
 +placeholder() {
-  color: $color_two_alt_two
+    color: $color_two
 }
-.webform-container-inline.webform-datepicker {
-  white-space: nowrap
+
+input:focus {
+  outline: none
 }
+
 input.error {
   border: 2px solid $brand-danger !important
+}
+form.search-form {
+  input.search-field {
+    //
+  }
+  input.search-submit {
+    //
+  }
+}
+
+a[href],
+button {
+  touch-action: manipulation
+}
+
+.container {
+  padding-left: $outer_margins
+  padding-right: $outer_margins
 }
 
 /*******
 * NAVIGATION
 ********/
 // bootstrap alters
+.navbar {
+  margin-bottom: 0
+}
 .navbar-default,
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
   border: none
@@ -150,7 +214,7 @@ ul.nav {
     }
     //// depth 2+
     > ul.dropdown-menu li ul {
-      // left: -1px // if border
+      left: -2em // if border;
       background: $color_one_alt
       margin-top: 0
       padding-left: 13px
@@ -195,5 +259,16 @@ input::-moz-focus-inner {
     > a:hover {
       color: $dropdown-link-active-color
     }
+  }
+}
+
+#infscr-loading {
+  margin-top: 1rem
+  margin-bottom: 1rem
+  em {
+    color: $color_three
+  }
+  > img {
+    display: none
   }
 }

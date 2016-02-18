@@ -1,14 +1,5 @@
 <?php
 
-// Check if BiG Article template is used
-function is_big_article() {
-    global $post;
-    if (is_single($post->ID) && (get_field('groot_artikel', $post->ID) == '1')) {
-        return true;
-    }
-    return false;
-}
-
 // numbered pagination
 function wpbeginner_numeric_posts_nav() {
 
@@ -119,19 +110,9 @@ add_action('admin_head', 'admin_css_change');
 /**
  * ADD EXTRA IMAGE SIZES
  */
-add_image_size('header-afbeelding-cover', 2000, 475, true);// Cover Image
-add_image_size('header-afbeelding-cover-small', 1200, 270, true);// Cover Image
-
-add_image_size('artikellijst', 700, 369, true);  // Article Thumb 495, 255
-add_image_size('artikellijst-klein', 480, 253, true);  // Article Thumb 495, 255,
-add_image_size('kop-afbeelding-artikel', 667, 999999, false); // Head Image
-add_image_size('slider', 1000, 375, true); // Slider Image <- also sidebar
-add_image_size('grote-afbeelding-in-tekst', 1000, 9999999, false);// max width
-
-add_image_size('author', 400, 400, false);// author
-
-add_image_size('ad', 1000, 300, true); // Ad Image
-///add_image_size( 'auteur', 2000, 475, true); // Author USE THUMBNAIL
+add_image_size('header-image', 700, 475, false);// Cover Image
+add_image_size('link-block', 320, 190, true);//
+add_image_size('link-block-large', 700, 416, true);
 
 // Add new image sizes
 function lc_insert_custom_image_sizes( $image_sizes ) {
@@ -159,12 +140,8 @@ add_action( 'after_setup_theme', 'lc_custom_image_setup' );
 
 
 ///// IGNORE STICKY
-// this is key!
-add_action('pre_get_posts', 'wpse74620_ignore_sticky');
-// the function that does the work
-function wpse74620_ignore_sticky($query)
-{
-    // sure we're were we want to be.
+//add_action('pre_get_posts', 'wpse74620_ignore_sticky');
+function wpse74620_ignore_sticky($query) {
     if (is_home() && $query->is_main_query())
         $query->set('ignore_sticky_posts', true);
 }
@@ -193,29 +170,15 @@ function tc_handle_upload_prefilter($file) {
  * CHANGE FEATURED IMAGE
  */
 
-add_action('do_meta_boxes', 'change_image_box');
-function change_image_box()
-{
+//add_action('do_meta_boxes', 'change_image_box');
+function change_image_box() {
     remove_meta_box( 'postimagediv', 'post', 'side' );
     add_meta_box('postimagediv', __('Pagina-afbeelding <br />Minimaal (1000 x 375 px)'), 'post_thumbnail_meta_box', 'post', 'normal', 'high');
 }
-/*
-add_action('admin_head-post-new.php',change_thumbnail_html);
-add_action('admin_head-post.php',change_thumbnail_html);
-function change_thumbnail_html( $content ) {
-    if ('lit_bookinfo' == $GLOBALS['post_type'])
-        add_filter('admin_post_thumbnail_html',do_thumb);
-}
-function do_thumb($content){
-    return str_replace(__('Set featured image'), __('Pagina-afbeelding (minimaal 1000 x 375 px)'),$content);
-}
-*/
-
 
 /**
  * ADD SEARCH TO MENU
  */
-
 // add_filter('wp_nav_menu_items','add_search_box_to_menu', 10, 2);
 function add_search_box_to_menu( $items, $args ) {
     if( $args->theme_location == 'primary_navigation' )
@@ -227,6 +190,7 @@ function add_search_box_to_menu( $items, $args ) {
 /**
  *  Thumbnail upscale
 */
+//add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
 function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ){
     if ( !$crop ) return null; // let the wordpress default function handle this
 
@@ -241,4 +205,85 @@ function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $cro
 
     return array( 0, 0, (int) $s_x, (int) $s_y, (int) $new_w, (int) $new_h, (int) $crop_w, (int) $crop_h );
 }
-add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
+
+
+/**
+ * ADD TEXT EDITOR STYLE
+ */
+
+function s_add_editor_styles() {
+    $loc = 'kroon-magazine.dev/wp-content/themes/kroon/dist/styles/editor.css';
+    // echo "<pre>";print_r($loc);die();
+    add_editor_style($loc);
+}
+// add_action( 'admin_head', 's_add_editor_styles');
+
+
+
+/**
+ * Retrieves the attachment data such as Title, Caption, Alt Text, Description
+ * @param int $post_id the ID of the Post, Page, or Custom Post Type
+ * @param String $size The desired image size, e.g. thumbnail, medium, large, full, or a custom size
+ * @return stdClass If there is only one result, this method returns a generic
+ * stdClass object representing each of the image's properties, and an array if otherwise.
+ */
+function getImageAttachmentData( $post_id, $size = 'thumbnail', $count = 1 ) {
+    $objMeta = array();
+    $meta;// (stdClass)
+    $args = array(
+        'numberposts' => $count,
+        'post_parent' => $post_id,
+        'post_type' => 'attachment',
+        'nopaging' => false,
+        'post_mime_type' => 'image',
+        'order' => 'ASC', // change this to reverse the order
+        'orderby' => 'menu_order ID', // select which type of sorting
+        'post_status' => 'any'
+    );
+
+    $attachments = & get_children($args);
+
+    if( $attachments ) {
+        foreach( $attachments as $attachment ) {
+            $meta = new stdClass();
+            $meta->ID = $attachment->ID;
+            $meta->title = $attachment->post_title;
+            $meta->caption = $attachment->post_excerpt;
+            $meta->description = $attachment->post_content;
+            $meta->alt = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
+
+            // Image properties
+            $props = wp_get_attachment_image_src( $attachment->ID, $size, false );
+
+            $meta->properties['url'] = $props[0];
+            $meta->properties['width'] = $props[1];
+            $meta->properties['height'] = $props[2];
+
+            $objMeta[] = $meta;
+        }
+
+        return ( count( $attachments ) == 1 ) ? $meta : $objMeta;
+    }
+}
+
+
+/**
+ * LET EDITOR CHANGE WIDGETS
+ */
+$role = get_role('editor');
+$role->add_cap('edit_theme_options');
+function custom_admin_menu() {
+
+  $user = new WP_User(get_current_user_id());
+  if (!empty( $user->roles) && is_array($user->roles)) {
+    foreach ($user->roles as $this_role)
+      $role = $this_role;
+  }
+
+  if($role == "editor") {
+    remove_submenu_page( 'themes.php', 'themes.php' );
+    remove_submenu_page( 'themes.php', 'nav-menus.php' );
+  }
+}
+
+//add_action('admin_menu', 'custom_admin_menu');
