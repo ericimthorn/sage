@@ -22,14 +22,15 @@ var uglify       = require('gulp-uglify');
 
 //// ERIX
 
-var postcss     = require('gulp-postcss');
 var poststylus  = require('poststylus');
 var stylus      = require('gulp-stylus');
+var downbeat    = require('downbeat');
 var lost        = require('lost');
 var rupture     = require('rupture');
 var nib         = require('nib');
 var axis        = require('axis');
 var bootstrap   = require('bootstrap-styl');
+var svgSprite   = require('gulp-svg-sprite');
 
 //// -ERIX
 
@@ -274,6 +275,7 @@ gulp.task('watch', function() {
   gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
+  gulp.watch([path.source + 'images/svgsprites/**/*'], ['sprite']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
 });
 
@@ -298,6 +300,28 @@ gulp.task('wiredep', function() {
       hasChanged: changed.compareSha1Digest
     }))
     .pipe(gulp.dest(path.source + 'styles'));
+});
+
+/// ### SCG Sprite
+gulp.task('sprite', function() {
+  var config = {
+    mode: {
+      css: {     // Activate the «css» mode
+        bust : false,
+        sprite: './svg-sprite.svg',
+        render : {
+          styl: {
+            template: './assets/styles/sprite-template.txt',
+            dest: '../../styles/lib/_svg-sprite.styl'
+          }
+        }
+      }
+    }
+  };
+  gulp.src(path.source + 'images/svgsprites/*.svg')
+    .pipe(svgSprite(config))
+    .pipe(gulp.dest(path.source + 'images'));
+  gulp.start('images');
 });
 
 // ### Gulp
