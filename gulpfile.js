@@ -112,7 +112,7 @@ var cssTasks = function(filename) {
     })
     .pipe(function() {
       return gulpif('*.styl', stylus({ // ERIX
-        use: [bootstrap(), rupture(), nib(), axis(), poststylus('lost')],
+        use: [bootstrap(), downbeat(), rupture(), nib(), axis(), poststylus('lost')],
         compress: true
       }));
     })
