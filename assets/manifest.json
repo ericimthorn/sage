@@ -8,7 +8,7 @@
     },
     "main.css": {
       "files": [
-        "styles/main.styl"
+        "styles/main.scss"
       ],
       "main": true
     },
