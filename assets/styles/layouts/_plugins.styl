@@ -19,8 +19,8 @@
         social_media = facebook twitter youtube instagram soundcloud
         for item in social_media {
           &.social-media-block__item--{item} {
-            @extend .svg-sprite_{item}-dims
-            @extend .svg-sprite_{item}
+            @extend .svg-sprites_{item}-dims
+            @extend .svg-sprites_{item}
           }
         }
       }
@@ -51,8 +51,8 @@
         social_media = facebook twitter email linkedin gplus pinterest
         for item in social_media {
           &.social-share-block__item--{item} {
-            @extend .svg-sprite_share-{item}-dims
-            @extend .svg-sprite_share-{item}
+            @extend .svg-sprites_share-{item}-dims
+            @extend .svg-sprites_share-{item}
           }
         }
         &:hover {
