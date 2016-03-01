@@ -27,7 +27,6 @@ var stylus      = require('gulp-stylus');
 var downbeat    = require('downbeat');
 var lost        = require('lost');
 var rupture     = require('rupture');
-var nib         = require('nib');
 var axis        = require('axis');
 var bootstrap   = require('bootstrap-styl');
 var svgSprite   = require('gulp-svg-sprite');
@@ -112,7 +111,7 @@ var cssTasks = function(filename) {
     })
     .pipe(function() {
       return gulpif('*.styl', stylus({ // ERIX
-        use: [bootstrap(), downbeat(), rupture(), nib(), axis(), poststylus('lost')],
+        use: [bootstrap(), downbeat(), rupture(), axis(), poststylus('lost')],
         compress: true
       }));
     })

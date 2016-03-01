@@ -55,7 +55,6 @@
       "traverse": "^0.6.6",
       "wiredep": "^2.2.2",
       "lost": "latest",
-      "nib": "latest",
       "rupture": "latest",
       "poststylus": "latest",
       "gulp-stylus": "latest",
