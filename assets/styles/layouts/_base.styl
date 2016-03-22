@@ -1,0 +1,274 @@
+render-baseline()
+
+html {
+  font-family: $font_one
+  background: $color_one
+  color: $color_two
+}
+
+body {
+  background: transparent
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font_two
+  margin-bottom: 0
+  +alllink() {
+    //
+  }
+}
+
+h1 {
+  margin-bottom 1.4rem
+  margin-top: 0
+  font-size: 1.4rem
+  line-height-rhythm()
+  font-weight: normal
+  color: $color_two
+}
+
+h2 {
+  color: $color_three
+  font-size: 1.2rem
+  line-height-rhythm()
+  font-weight normal
+  +alllink() {
+      text-decoration: none
+  }
+  a:hover {
+      color: $color_three
+      text-decoration: underline
+  }
+}
+h3 {
+    font-size: 1rem
+}
+
+p {
+  img {
+    height: auto
+    max-width: 100%
+  }
+}
+
+.wp-caption,
+figure {
+  border: none
+}
+figcaption {
+  margin-top: .8rem
+  font-size: .8rem
+  line-height-rhythm()
+  text-align: right
+  color: $color_two_alt
+}
+
+///// ADMIN TEXTEDITOR
+body#tinymce {
+  margin: 5px 15px !important
+}
+
++alllink() {
+  &.continued,
+  .continued,
+  .read-more {
+    white-space: nowrap
+  }
+}
+
+a {
+  text-decoration: underline
+  &:visited {
+    color: $color_three_alt
+  }
+  &:hover {
+    color: $color_two
+  }
+  &:active {
+    color: $color_four
+  }
+}
+
+label {
+  min-width: 135px
+  font-weight: normal
+}
+
+blockquote {
+  font-style: italic
+}
+
+table {
+  @extend .table
+  @extend .table-striped
+  @extend .table-hover
+}
+
+/******
+FORMS
+******/
+a.btn {
+  //
+  &:hover {
+    //
+  }
+}
+
+//// INPUT TYPES
+.pager li a,
+.btn,
+input {
+  box-shadow: none
+}
+
+textarea,
+input:not([type="submit"]):not([type="file"]):not([type="image"]) {
+  appearance: none
+  box-sizing: border-box
+  border: none
+  padding: 3px 10px 5px 10px
+  background: $color_five
+  max-width: 100%
+  font-size .9rem
+}
+.pager li a,
+button,
+input[type="submit"] {
+  border: none
+  background: $color_three
+  color: $color_one
+  padding: 5px 5px
+}
+
++placeholder() {
+    color: $color_two
+}
+
+input:focus {
+  outline: none
+}
+
+input.error {
+  border: 2px solid $brand-danger !important
+}
+form.search-form {
+  input.search-field {
+    //
+  }
+  input.search-submit {
+    //
+  }
+}
+
+a[href],
+button {
+  touch-action: manipulation
+}
+
+.container {
+  padding-left: $outer_margins
+  padding-right: $outer_margins
+}
+
+/*******
+* NAVIGATION
+********/
+// bootstrap alters
+.navbar {
+  margin-bottom: 0
+}
+.navbar-default,
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border: none
+}
+
+ul.nav {
+  noliststyle()
+  //// depth 0+
+  li {
+    {$alllink} {
+      text-decoration: none
+    }
+    // parents & open
+    &.current-menu-ancestor,
+    &.current-menu-parent,
+    &.current-menu-parent,
+    &.current_page_ancestor {
+      > a,
+      > a:hover {
+        background-color: $dropdown-link-active-bg
+        color: $dropdown-link-active-color
+      }
+    }
+
+    //// depth 1+
+    ul.dropdown-menu {
+      padding-top: 0
+      padding-bottom: 0
+      border: none
+      box-shadow: $shadow_one
+    }
+    //// depth 1
+    > ul.dropdown-menu {
+      //
+    }
+    //// depth 2+
+    > ul.dropdown-menu li ul {
+      left: -2em // if border;
+      background: $color_one_alt
+      margin-top: 0
+      padding-left: 13px
+      +above($break_one) {
+        padding-left: 0
+      }
+    }
+  }
+  //// depth 0
+  > li {
+    //
+  }
+}
+
+/*******
+* FIXES AND OTHER
+********/
+
+.media_embed iframe {
+  max-width: 100%
+}
+
+//// Fix for Firefox
+input::-moz-focus-inner {
+  padding: 0
+  border: 0
+}
+
+.caret.left-caret {
+  margin-right: 5px
+  margin-left: 0px
+}
+
+// fix depth 2 dropdowns
+.navbar-default ul.navbar-nav li ul.dropdown-menu li {
+  &.current-menu-ancestor,
+  &.current-menu-parent,
+  &.current-menu-parent,
+  &.current_page_ancestor,
+  &.open {
+    > a,
+    > a:hover {
+      color: $dropdown-link-active-color
+    }
+  }
+}
+
+#infscr-loading {
+  margin-top: 1rem
+  margin-bottom: 1rem
+  em {
+    color: $color_three
+  }
+  > img {
+    display: none
+  }
+}
