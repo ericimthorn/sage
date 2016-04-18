@@ -123,6 +123,18 @@ stickyfooter(footerHeight = 50, container = unquote("container"), containerPush 
   }
 }
 
+sticky-footer-flex() {
+  body {
+    display: flex
+    min-height: 100vh
+    flex-direction: column
+  }
+  .wrap.container {
+    flex: 1 0
+    width 100%
+  }
+}
+
 msc(step = 0, ratio = modular_scale) {
   return ratio ** step * base-font-size px //Exponent **
 }
@@ -193,4 +205,27 @@ move_in($direction = 'left') {
       transform: translate(0, 0);
     }
   }
+}
+
+reverse-color($this_bg_color = $color_three, $this_color = $color_one) {
+  background: $this_bg_color
+  color: $this_color
+  h1, h2, h3, h4, h5, h6, p, table, blockquote {
+    color: $this_color
+  }
+  {$alllink} {
+    color: $this_color
+  }
+  .pager li a,
+  button,
+  input[type="submit"] {
+    background: $this_color
+    color: $this_bg_color
+  }
+  ::selection {
+    background: lighten($color_one, 60%);
+  }
+}
+.inverted {
+  reverse-color()
 }

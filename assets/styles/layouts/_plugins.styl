@@ -35,7 +35,7 @@
 }
 .schitshare {
   ul {
-    noliststyle()
+    no-list-style()
     li {
       margin-bottom: 8px
       a {
@@ -62,11 +62,16 @@
 
         }
       }
-      .social-media-block__text {
+      .social-share-block__text {
         padding-left: 5px
         &:hover {
           text-decoration: underline
         }
+      }
+    }
+    body:not(.is-mobile) & {
+      .social-share-block__list-item--whatsapp {
+        display: none
       }
     }
   }

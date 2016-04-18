@@ -66,6 +66,7 @@ figcaption {
 ///// ADMIN TEXTEDITOR
 body#tinymce {
   margin: 5px 15px !important
+//  background #eee !important
 }
 
 +alllink() {
@@ -119,6 +120,8 @@ a.btn {
 .btn,
 input {
   box-shadow: none
+  height: 2rem
+  vertical-align: top
 }
 
 textarea,
@@ -126,7 +129,7 @@ input:not([type="submit"]):not([type="file"]):not([type="image"]) {
   appearance: none
   box-sizing: border-box
   border: none
-  padding: 3px 10px 5px 10px
+  padding: .3rem .7rem .4rem .7rem
   background: $color_five
   max-width: 100%
   font-size .9rem
@@ -137,7 +140,7 @@ input[type="submit"] {
   border: none
   background: $color_three
   color: $color_one
-  padding: 5px 5px
+  padding: .3rem .7rem
 }
 
 +placeholder() {
@@ -271,4 +274,9 @@ input::-moz-focus-inner {
   > img {
     display: none
   }
+}
+
+//// BOOTSTRAP FIXES
+.page-header {
+  border-bottom: 0
 }

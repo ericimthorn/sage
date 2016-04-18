@@ -1,0 +1,21 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="1092.86" height="502.84" viewBox="0 0 1092.86 502.84">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 375.82px;
+        font-family: Helvetica Neue;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #29abe2;
+      }
+
+      .cls-3 {
+        fill: #ccc;
+      }
+    </style>
+  </defs>
+  <title>logo</title>
+  <text class="cls-1" transform="translate(0 322.07)"><tspan class="cls-2">L</tspan><tspan x="222.85" y="0">O</tspan><tspan class="cls-2" x="515.24" y="0">G</tspan><tspan class="cls-3" x="800.48" y="0">O</tspan></text>
+</svg>
