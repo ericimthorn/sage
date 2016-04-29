@@ -124,9 +124,16 @@ sticky-footer(footerHeight = 50, container = unquote("container"), containerPush
 }
 
 sticky-footer-flex() {
+  html {
+    height: 100%
+    *::-ms-backdrop, body {
+      display: block !important
+    }
+  }
   body {
     display: flex
     min-height: 100vh
+    height: 100%
     flex-direction: column
   }
   .wrap.container {
