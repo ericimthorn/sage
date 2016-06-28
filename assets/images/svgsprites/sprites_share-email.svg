@@ -1,0 +1,19 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #adaaaa;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>sprites</title>
+  <path class="cls-1" d="M22.5,44.1A21.6,21.6,0,1,1,44.1,22.5,21.63,21.63,0,0,1,22.5,44.1Z"/>
+  <g>
+    <polygon class="cls-2" points="22.34 27.19 11.04 15.9 11.04 30.54 33.96 30.54 33.96 15.57 22.34 27.19"/>
+    <polygon class="cls-2" points="22.4 25.11 32.98 14.46 11.81 14.46 22.4 25.11"/>
+  </g>
+</svg>

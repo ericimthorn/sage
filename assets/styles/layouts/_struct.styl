@@ -1,0 +1,57 @@
+
+.container {
+  lost-center: $break_max.w
+  //center($break_max.w, $break_max.p)
+}
+
+//// HEADER
+header.banner {
+  .logo {
+    lost-column: 6/12
+    +above($break_one) {
+      lost-column: 3/12
+    }
+  }
+  .navigation-container {
+    lost-column: 6/12
+    +above($break_one) {
+      lost-column: 9/12
+    }
+  }
+}
+
+//// CONTENT
+$total_parts = 24
+$main_width = 17
+.wrap.container {
+  main.main {
+    lost-column: $total_parts / $total_parts
+    .sidebar-primary & {  // if has sidebar
+      +above($break_one) {
+        lost-column: $main_width / $total_parts 2 1.8rem
+      }
+    }
+  }
+  //// SIDEBAR
+  aside.sidebar {
+    lost-column: $total_parts / $total_parts
+    +above($break_one) {
+      lost-column: ($total_parts - $main_width) / $total_parts 2 1.8rem
+    }
+  }
+}
+
+$total_parts = 48
+$main_width = 15
+footer.content-info {
+  .menu-footer_menu-container {
+    +above($break_two) {
+      lost-column: ($main_width / $total_parts) 2 0
+    }
+  }
+  .contributors {
+    +above($break_two) {
+      lost-column: (($total_parts - $main_width) / $total_parts) 2 0
+    }
+  }
+}

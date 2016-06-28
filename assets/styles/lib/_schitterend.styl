@@ -1,0 +1,196 @@
+//@import 'lost'
+@import 'rupture'
+@import 'axis'
+@import 'vertical-rhythm'
+@import 'modular-scale'
+
+
+// Named ratios - http://modularscale.com
+//http://www.modularscale.com/?15&px&1.618&web&table
+
+double_octave = 4 / 1.0
+major_twelfth = 3 / 1.0
+major_eleventh = 8 / 3.0
+major_tenth = 5 / 2.0
+octave = 2 / 1.0
+major_seventh = 15 / 8.0
+minor_seventh = 16 /9.0
+major_sixth = 5 / 3.0
+minor_sixth = 8 / 5.0
+fifth = 3 / 2.0
+augmented_fourth = 1.414
+golden = 1.6180339887
+fourth = 4 / 3.0
+major_third = 5 / 4.0
+minor_third = 6 / 5.0
+major_second = 9 / 8.0
+minor_second = 16 / 15.0
+
+modular_scale = golden
+
+msc(step = 0, ratio = modular_scale) {
+  return ratio ** step * base-font-size px //Exponent **
+}
+
+no-button-style() {
+  background: transparent
+  border: none
+  border-radius: 0
+  appearance: none
+}
+
+no-list-style() {
+  list-style: none
+  padding-left: 0
+  li {
+    list-style: none
+  }
+}
+
+hide-text() {
+  overflow hidden
+  text-indent -1000%
+  white-space nowrap
+}
+
+
+hyphenation() {
+  -ms-word-break: break-all
+  word-break: break-all
+  word-break: break-word
+  -moz-hyphens: auto
+  -webkit-hyphens: auto
+  hyphens: auto
+}
+
+no-word-brake() {
+  word-wrap: no-wrap;
+  white-space: nowrap;
+}
+
+@keyframes do-fadein {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+set-border( $coordinates = 0 0 0 0, $style = solid, $color = #000000 ) {
+  $top = $coordinates[1]
+  $right = $coordinates[2]
+  $bottom = $coordinates[3]
+  $left = $coordinates[4]
+
+  if $top is a 'unit' {
+    border-top: $top $style $color
+  }
+  if $right is a 'unit' {
+    border-right: $right $style $color
+  }
+  if $bottom is a 'unit' {
+    border-bottom: $bottom $style $color
+  }
+  if unitless is a 'unit' {
+    border-left: $left $style $color
+  }
+}
+
+type-ligatures() {
+  -moz-font-feature-settings: "liga=1, dlig=1"
+  -ms-font-feature-settings: "liga", "dlig"
+  -webkit-font-feature-settings: "liga", "dlig"
+  -o-font-feature-settings: "liga", "dlig"
+  font-feature-settings: "liga", "dlig"
+}
+
+// Inspired by Compass' sticky-footer() mixin
+stickyfooter(footerHeight = 50, container = unquote("container"), containerPush = unquote("containerPush"), footer = unquote("footer")) {
+  html, body {
+    height: 100%
+  }
+  {container} {
+    clear: both
+    min-height: 100%
+    height: auto !important
+    height: 100%
+    margin-bottom: unit(footerHeight * -1, 'px')
+  }
+  {containerPush} {
+    height: unit(footerHeight, 'px')
+  }
+  {footer} {
+    clear: both
+    position: relative
+    height: unit(footerHeight, 'px')
+  }
+}
+
+msc(step = 0, ratio = modular_scale) {
+  return ratio ** step * base-font-size px //Exponent **
+}
+
+.js_hidden {
+  display: none
+}
+
+$alllink = "a, a:link, a:visited"
+$alllink_child = "> a, > a:link, > a:visited"
+$allh = "h1, h2, h3, h4, h5, h6"
+
+alllink() {
+  a, a:link, a:visited {
+    {block}
+  }
+}
+alllink_child() {
+  > a, > a:link, > a:visited {
+    {block}
+  }
+}
+allh() {
+  h1, h2, h3, h4, h5, h6 {
+    {block}
+  }
+}
+
+placeholder() {
+  &::-webkit-input-placeholder {
+    {block}
+  }
+  &:-moz-placeholder {
+    {block}
+  }
+  &::-moz-placeholder {
+    {block}
+  }
+  &:-ms-input-placeholder {
+    {block}
+  }
+}
+
+ie11(child) {
+  @media all and (-ms-high-contrast: none) {
+  {child},
+  *::-ms-backdrop, {child} {
+      {block}
+    }
+  }
+}
+
+///// @TODO afmaken
+move_in($direction = 'left') {
+  $start-amount = 200%
+  transform: translate($start-amount, 0);
+  animation: move_in 1s 1;
+  transform: translate(0, 0);
+  opacity: 0
+  animation-delay: 2s;
+  @-webkit-keyframes move_in {
+    0% {
+      opacity: 0
+      transform: translate($start-amount, 0);
+    }
+    100% {
+      opacity: 1
+      transform: translate(0, 0);
+    }
+  }
+}

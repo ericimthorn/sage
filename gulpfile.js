@@ -20,6 +20,19 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 
+//// ERIX
+
+var poststylus  = require('poststylus');
+var stylus      = require('gulp-stylus');
+var downbeat    = require('downbeat');
+var lost        = require('lost');
+var rupture     = require('rupture');
+var axis        = require('axis');
+var bootstrap   = require('bootstrap-styl');
+var svgSprite   = require('gulp-svg-sprite');
+
+//// -ERIX
+
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
 
@@ -96,12 +109,17 @@ var cssTasks = function(filename) {
         errLogToConsole: !enabled.failStyleTask
       }));
     })
+    .pipe(function() {
+      return gulpif('*.styl', stylus({ // ERIX
+        use: [bootstrap(), downbeat(), rupture(), axis(), poststylus('lost')],
+        compress: true
+      }));
+    })
     .pipe(concat, filename)
     .pipe(autoprefixer, {
       browsers: [
-        'last 2 versions',
-        'android 4',
-        'opera 12'
+        'last 1 versions',
+        '> 1% in NL'
       ]
     })
     .pipe(cssNano, {
@@ -255,6 +273,7 @@ gulp.task('watch', function() {
   gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
+  gulp.watch([path.source + 'images/svgsprites/**/*'], ['sprite']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
 });
 
@@ -279,6 +298,28 @@ gulp.task('wiredep', function() {
       hasChanged: changed.compareSha1Digest
     }))
     .pipe(gulp.dest(path.source + 'styles'));
+});
+
+/// ### SCG Sprite
+gulp.task('sprite', function() {
+  var config = {
+    mode: {
+      css: {     // Activate the «css» mode
+        bust : false,
+        sprite: './svg-sprite.svg',
+        render : {
+          styl: {
+            template: './assets/styles/sprite-template.txt',
+            dest: '../../styles/lib/_svg-sprite.styl'
+          }
+        }
+      }
+    }
+  };
+  gulp.src(path.source + 'images/svgsprites/*.svg')
+    .pipe(svgSprite(config))
+    .pipe(gulp.dest(path.source + 'images'));
+  gulp.start('images');
 });
 
 // ### Gulp
